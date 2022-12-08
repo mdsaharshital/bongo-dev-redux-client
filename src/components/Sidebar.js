@@ -1,4 +1,5 @@
 import React from "react";
+import { TiArrowBack } from "react-icons/ti";
 import { Link, Outlet } from "react-router-dom";
 
 const Sidebar = () => {
@@ -11,8 +12,11 @@ const Sidebar = () => {
         <Link to="bloglist">Blog List</Link>
       </li>
       <li>
-        <Link to="/" className="underline text-blue-300 cursor-pointer">
-          Back to Home
+        <Link to="/" className=" text-blue-300 cursor-pointer">
+          <span className="flex items-center">
+            <p>Home</p>
+            <TiArrowBack className="text-xl ml-1" />
+          </span>
         </Link>
       </li>
     </>
