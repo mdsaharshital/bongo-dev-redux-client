@@ -11,8 +11,8 @@ export const MenuSide = (
     <li>
       <Link to="/dashboard">Dashboard</Link>
     </li>
-    <li className="lg:hidden">
-      <Link to="/dashboard">khalal</Link>
+    <li className="hidden md:block">
+      <Link to="/">khalal</Link>
     </li>
   </>
 );
