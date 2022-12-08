@@ -5,7 +5,7 @@ import RightSideHome from "../../components/HomeCompo/RightSideHome";
 
 const Home = () => {
   return (
-    <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 justify-items-stretch lg:px-[14vw] md:px-[14vw]">
+    <div className="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-1 justify-items-stretch lg:px-[14vw] md:px-[14vw] mt-8 gap-4">
       <LeftSideHome />
       <MiddleSideHome />
       <RightSideHome />

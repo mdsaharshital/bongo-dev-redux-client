@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 
 const Main = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-slate-50">
       <Navbar />
     </div>
   );

@@ -1,10 +1,15 @@
 import React from "react";
+import HomeCard from "./HomeCard";
 
 const MiddleSideHome = () => {
   return (
-    <div className="col-span-2">
-      <div className="h-[90vh]  bg-blue-300">
-        <h1>Hello from middle</h1>
+    <div className="col-span-3 ">
+      <div className="flex text-black mb-3">
+        <h1 className="ml-2 text-xl">Latest</h1>
+        <h1 className="ml-2 text-xl">First Upload</h1>
+      </div>
+      <div className="h-[80vh]">
+        <HomeCard />
       </div>
     </div>
   );
