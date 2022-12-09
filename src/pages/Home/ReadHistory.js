@@ -16,7 +16,7 @@ const ReadHistory = () => {
         <hr className=" border border-slate-400 my-2" />
         {reading.length ? (
           reading.map((blog, index) => (
-            <Link to={`/blog/${blog._id}`} key={index}>
+            <Link to={`/BlogDetail/${blog._id}`} key={index}>
               <div className="my-8 shadow-md p-4 rounded-md">
                 <p className="text-black text-xl my-2 font-semibold">
                   {index + 1}. {blog.title}
@@ -36,6 +36,22 @@ const ReadHistory = () => {
           Already Read
         </h1>
         <hr className=" border border-slate-400 my-2" />
+        {readingDone.length ? (
+          readingDone.map((blog, index) => (
+            <Link to={`/BlogDetail/${blog._id}`} key={index}>
+              <div className="my-8 shadow-md p-4 rounded-md">
+                <p className="text-black text-xl my-2 font-semibold">
+                  {index + 1}. {blog.title.slice(0, 40)}
+                </p>
+                <p className="text-sm text-slate-600">
+                  {blog.description.slice(0, 100)}
+                </p>
+              </div>
+            </Link>
+          ))
+        ) : (
+          <p>0 Read</p>
+        )}
       </div>
     </div>
   );
