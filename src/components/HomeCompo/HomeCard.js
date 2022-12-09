@@ -5,12 +5,11 @@ import { RiBookmarkLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import profilePic from "../../asstes/user-profile-icon.webp";
 import { useDispatch } from "react-redux";
-import { readingBlogs } from "../../redux/actions/blogAction";
+import { addReadingBlogs } from "../../redux/actions/blogAction";
 
 const HomeCard = ({ blog }) => {
   const dispatch = useDispatch();
   const [isLoved, setIsLoved] = useState(false);
-
   return (
     <div className="card custom_card text-black rounded-lg shadow-sm">
       <div className="card-body">
@@ -31,7 +30,10 @@ const HomeCard = ({ blog }) => {
           className="card-title text-[22px] text-start  md:text-2xl lg:text-3xl font-bold ml-11 tooltip"
           data-tip={blog.title}
         >
-          <Link to={`/BlogDetail/${blog._id}`}>
+          <Link
+            onClick={() => dispatch(addReadingBlogs(blog))}
+            to={`/BlogDetail/${blog._id}`}
+          >
             {blog.title.slice(0, 55)}...
           </Link>
         </h2>
@@ -63,7 +65,6 @@ const HomeCard = ({ blog }) => {
           </div>
           <div className="">
             <span
-              onClick={() => dispatch(readingBlogs(blog))}
               className="flex items-center cursor-pointer tooltip"
               data-tip={"Mark as Read"}
             >

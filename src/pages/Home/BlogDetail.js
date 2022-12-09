@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RiBookmarkLine } from "react-icons/ri";
+import { IoIosDoneAll } from "react-icons/io";
 import profilePic from "../../asstes/user-profile-icon.webp";
-import { readingBlogs } from "../../redux/actions/blogAction";
+import { completeReading, removeReading } from "../../redux/actions/blogAction";
 
 const BlogDetail = () => {
   const dispatch = useDispatch();
+  const [isMarked, setIsMarked] = useState(false);
   const { id } = useParams("id");
   const blog = useSelector((state) =>
     state.blog.blogs.filter((blog) => blog._id === id)
@@ -37,12 +39,23 @@ const BlogDetail = () => {
             <p className="md:ml-11 mt-1 cursor-pointer ">
               #graphql #webdev #beginners #tutorial
             </p>
-            <span
-              onClick={() => dispatch(readingBlogs(blog))}
-              className="flex items-center cursor-pointer tooltip"
-              data-tip={"Mark as Read"}
-            >
-              <RiBookmarkLine fontSize={"20px"} />
+            <span className="flex items-center cursor-pointer">
+              {isMarked ? (
+                <h1 className="text-sm bg-green-500 text-gray-900 px-2 font-bold flex items-center">
+                  Read <IoIosDoneAll fontSize={"20px"} />
+                </h1>
+              ) : (
+                <span className="tooltip" data-tip={"Mark as Read"}>
+                  <RiBookmarkLine
+                    onClick={() => {
+                      setIsMarked(!isMarked);
+                      dispatch(removeReading(blog));
+                      dispatch(completeReading(blog));
+                    }}
+                    fontSize={"20px"}
+                  />
+                </span>
+              )}
             </span>
           </span>
           <hr />
