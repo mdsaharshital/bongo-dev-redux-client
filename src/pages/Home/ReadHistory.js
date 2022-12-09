@@ -1,8 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { RiBookmarkLine } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { completeReading, removeReading } from "../../redux/actions/blogAction";
 
 const ReadHistory = () => {
+  const dispatch = useDispatch();
   const reading = useSelector((state) => state.blog.readingBlogs);
   const readingDone = useSelector((state) => state.blog.completeReadBlogs);
   console.log("rr", reading);
@@ -16,16 +19,28 @@ const ReadHistory = () => {
         <hr className=" border border-slate-400 my-2" />
         {reading.length ? (
           reading.map((blog, index) => (
-            <Link to={`/BlogDetail/${blog._id}`} key={index}>
-              <div className="my-8 shadow-md p-4 rounded-md">
+            <div className="my-8 shadow-md p-4 rounded-md relative" key={index}>
+              <Link to={`/BlogDetail/${blog._id}`}>
                 <p className="text-black text-xl my-2 font-semibold">
                   {index + 1}. {blog.title}
                 </p>
-                <p className="text-sm text-slate-600">
-                  {blog.description.slice(0, 160)}
-                </p>
-              </div>
-            </Link>
+              </Link>
+              <p className="text-sm text-slate-600">
+                {blog.description.slice(0, 160)}
+              </p>
+              <span
+                className="tooltip text-black cursor-pointer block absolute top-4 right-4"
+                data-tip={"Mark as Read"}
+              >
+                <RiBookmarkLine
+                  onClick={() => {
+                    dispatch(removeReading(blog));
+                    dispatch(completeReading(blog));
+                  }}
+                  fontSize={"20px"}
+                />
+              </span>
+            </div>
           ))
         ) : (
           <p>Nothing left to read</p>
@@ -33,7 +48,7 @@ const ReadHistory = () => {
       </div>
       <div className="col-span-2 p-3">
         <h1 className="text-black text-xl font-bold md:text-2xl">
-          Already Read
+          Already Read Content
         </h1>
         <hr className=" border border-slate-400 my-2" />
         {readingDone.length ? (
