@@ -3,6 +3,7 @@ import { HiHeart, HiOutlineHeart } from "react-icons/hi";
 import { BiMessageRounded } from "react-icons/bi";
 import { RiBookmarkLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import profilePic from "../../asstes/user-profile-icon.webp";
 
 const HomeCard = ({ blog, index }) => {
   const [isLoved, setIsLoved] = useState(false);
@@ -14,7 +15,7 @@ const HomeCard = ({ blog, index }) => {
           <div className="w-8">
             <div className="avatar online">
               <div className="w-full rounded-full">
-                <img src="https://placeimg.com/192/192/people" alt="" />
+                <img src={profilePic} alt="profile" />
               </div>
             </div>
           </div>
@@ -28,7 +29,7 @@ const HomeCard = ({ blog, index }) => {
           data-tip={blog.title}
         >
           <Link to={`/BlogDetail/${blog._id}`}>
-            {blog.title.slice(0, 34)}...
+            {blog.title.slice(0, 55)}...
           </Link>
         </h2>
         <p className="ml-11 mt-4 cursor-pointer text-xs">
@@ -58,8 +59,11 @@ const HomeCard = ({ blog, index }) => {
             </span>
           </div>
           <div className="">
-            <span className="flex items-center cursor-pointer">
-              <h1 className="mr-1">8m read</h1>
+            <span
+              className="flex items-center cursor-pointer tooltip"
+              data-tip={"Mark as Read"}
+            >
+              <h1 className="mr-1 ">8m read</h1>
               <RiBookmarkLine fontSize={"20px"} />
             </span>
           </div>

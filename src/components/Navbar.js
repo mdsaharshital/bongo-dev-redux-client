@@ -1,15 +1,30 @@
 import React from "react";
 import logo from "../asstes/logo.png";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { MenuSide } from "./MenuSide";
+import people from "../asstes/people.png";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+  console.log("", pathname);
   const menuForNav = (
     <>
+      {pathname === "/" ? (
+        <></>
+      ) : (
+        <>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/dashBoard/bloglist">DashBoard</Link>
+          </li>
+        </>
+      )}
       <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src="https://placeimg.com/80/80/people" alt="" />
+            <img src={people} alt="" />
           </div>
         </label>
         <ul
@@ -61,7 +76,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex-none hidden lg:block">
-            <ul className="menu menu-horizontal">
+            <ul className="menu menu-horizontal items-center">
               {/* <!-- Navbar menu content here --> */}
               {menuForNav}
             </ul>
