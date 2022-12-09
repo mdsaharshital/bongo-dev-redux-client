@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi";
 import { BiMessageRounded } from "react-icons/bi";
-import { RiBookmarkLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import profilePic from "../../asstes/user-profile-icon.webp";
 import { useDispatch } from "react-redux";
@@ -37,10 +36,11 @@ const HomeCard = ({ blog }) => {
             {blog.title.slice(0, 55)}...
           </Link>
         </h2>
-        <p className="ml-11 mt-4 cursor-pointer text-xs">
-          #graphql #webdev #beginners #tutorial
-        </p>
-        <div className="card-actions justify-between items-center ml-11 mt-3">
+
+        <div className="card-actions justify-start items-center ml-11 mt-3 sm:flex-row">
+          <p className="cursor-pointer text-sm">
+            #graphql #webdev #beginners #tutorial
+          </p>
           <div className="flex items-center">
             <span className="flex items-center ">
               {isLoved ? (
@@ -61,14 +61,6 @@ const HomeCard = ({ blog }) => {
             <span className="flex items-center cursor-pointer ml-4 md:ml-6 lg:ml-8 xl:ml-12">
               <BiMessageRounded fontSize={"24px"} />
               <p className="ml-2">11 comments</p>
-            </span>
-          </div>
-          <div className="">
-            <span
-              className="flex items-center cursor-pointer tooltip"
-              data-tip={"Mark as Read"}
-            >
-              <RiBookmarkLine fontSize={"20px"} />
             </span>
           </div>
         </div>
