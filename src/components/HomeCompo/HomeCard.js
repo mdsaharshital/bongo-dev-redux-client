@@ -3,7 +3,7 @@ import { HiHeart, HiOutlineHeart } from "react-icons/hi";
 import { BiMessageRounded } from "react-icons/bi";
 import { RiBookmarkLine } from "react-icons/ri";
 
-const HomeCard = () => {
+const HomeCard = ({ blog }) => {
   const [isLoved, setIsLoved] = useState(false);
 
   return (
@@ -18,12 +18,15 @@ const HomeCard = () => {
             </div>
           </div>
           <div className="ml-2 absolute left-9 top-[0px]">
-            <p className="text-xs">Abu Bakar</p>
+            <p className="text-xs">{blog.author}</p>
             <p className="text-xs">5 dec</p>
           </div>
         </div>
-        <h2 className="card-title text-[22px]  md:text-2xl lg:text-3xl font-bold ml-11">
-          How to Test GraphQL API!
+        <h2
+          className="card-title text-[22px]  md:text-2xl lg:text-3xl font-bold ml-11 tooltip"
+          data-tip={blog.title}
+        >
+          {blog.title.slice(0, 34)}...
         </h2>
         <p className="ml-11 mt-4 cursor-pointer">
           #graphql #webdev #beginners #tutorial

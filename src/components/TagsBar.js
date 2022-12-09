@@ -2,8 +2,9 @@ import React from "react";
 
 const TagsBar = () => {
   return (
-    <div>
-      <div className="divider">Tags</div>
+    <div className="">
+      {/* <hr /> */}
+      <div className="mx-auto divider">Tags</div>
       <ul>
         <li>
           <span>#webdevelopment</span>

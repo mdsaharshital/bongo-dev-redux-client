@@ -8,7 +8,7 @@ const LeftSideHome = () => {
       <div className="">
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-60 text-black">
+          <ul className="menu w-60 text-black">
             {MenuSide}
             <TagsBar />
           </ul>
