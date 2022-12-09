@@ -1,10 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { RiBookmarkLine } from "react-icons/ri";
 import profilePic from "../../asstes/user-profile-icon.webp";
+import { readingBlogs } from "../../redux/actions/blogAction";
 
 const BlogDetail = () => {
+  const dispatch = useDispatch();
   const { id } = useParams("id");
   const blog = useSelector((state) =>
     state.blog.blogs.filter((blog) => blog._id === id)
@@ -36,6 +38,7 @@ const BlogDetail = () => {
               #graphql #webdev #beginners #tutorial
             </p>
             <span
+              onClick={() => dispatch(readingBlogs(blog))}
               className="flex items-center cursor-pointer tooltip"
               data-tip={"Mark as Read"}
             >

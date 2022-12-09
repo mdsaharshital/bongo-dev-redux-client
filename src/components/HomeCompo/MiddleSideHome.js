@@ -13,7 +13,7 @@ const MiddleSideHome = () => {
       </div>
       <div className="">
         {blogs.map((blog, index) => (
-          <HomeCard key={index} blog={blog} index={index} />
+          <HomeCard key={index} blog={blog} />
         ))}
       </div>
     </div>

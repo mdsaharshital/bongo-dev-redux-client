@@ -4,8 +4,11 @@ import { BiMessageRounded } from "react-icons/bi";
 import { RiBookmarkLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import profilePic from "../../asstes/user-profile-icon.webp";
+import { useDispatch } from "react-redux";
+import { readingBlogs } from "../../redux/actions/blogAction";
 
-const HomeCard = ({ blog, index }) => {
+const HomeCard = ({ blog }) => {
+  const dispatch = useDispatch();
   const [isLoved, setIsLoved] = useState(false);
 
   return (
@@ -60,10 +63,10 @@ const HomeCard = ({ blog, index }) => {
           </div>
           <div className="">
             <span
+              onClick={() => dispatch(readingBlogs(blog))}
               className="flex items-center cursor-pointer tooltip"
               data-tip={"Mark as Read"}
             >
-              <h1 className="mr-1 ">8m read</h1>
               <RiBookmarkLine fontSize={"20px"} />
             </span>
           </div>
