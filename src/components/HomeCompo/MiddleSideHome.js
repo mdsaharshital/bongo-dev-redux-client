@@ -12,9 +12,13 @@ const MiddleSideHome = () => {
         <h1 className="ml-2 text-xl">First Upload</h1>
       </div>
       <div className="">
-        {blogs.map((blog, index) => (
-          <HomeCard key={index} blog={blog} />
-        ))}
+        {blogs.length ? (
+          blogs.map((blog, index) => <HomeCard key={index} blog={blog} />)
+        ) : (
+          <p className="text-red-500 text-3xl font-bold text-center">
+            No Blogs to show!
+          </p>
+        )}
       </div>
     </div>
   );
