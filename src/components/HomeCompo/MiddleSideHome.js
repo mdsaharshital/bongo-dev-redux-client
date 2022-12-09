@@ -4,6 +4,13 @@ import HomeCard from "./HomeCard";
 
 const MiddleSideHome = () => {
   const blogs = useSelector((state) => state.blog.blogs);
+  if (!blogs.length) {
+    return (
+      <div className="lg:w-[60vw] h-[80vh] flex justify-center items-center">
+        <progress className="progress w-56 xm-auto"></progress>
+      </div>
+    );
+  }
   console.log(blogs);
   return (
     <div className="col-span-3 ">
