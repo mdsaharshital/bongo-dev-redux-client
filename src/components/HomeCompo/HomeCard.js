@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi";
 import { BiMessageRounded } from "react-icons/bi";
 import { RiBookmarkLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
-const HomeCard = ({ blog }) => {
+const HomeCard = ({ blog, index }) => {
   const [isLoved, setIsLoved] = useState(false);
 
   return (
@@ -18,17 +19,19 @@ const HomeCard = ({ blog }) => {
             </div>
           </div>
           <div className="ml-2 absolute left-9 top-[0px]">
-            <p className="text-xs">{blog.author}</p>
-            <p className="text-xs">5 dec</p>
+            <p className="text-xs">{blog.author ? blog.author : "Anonymous"}</p>
+            <p className="text-xs">{blog.publishedAt.slice(0, 10)}</p>
           </div>
         </div>
         <h2
-          className="card-title text-[22px]  md:text-2xl lg:text-3xl font-bold ml-11 tooltip"
+          className="card-title text-[22px] text-start  md:text-2xl lg:text-3xl font-bold ml-11 tooltip"
           data-tip={blog.title}
         >
-          {blog.title.slice(0, 34)}...
+          <Link to={`/BlogDetail/${blog._id}`}>
+            {blog.title.slice(0, 34)}...
+          </Link>
         </h2>
-        <p className="ml-11 mt-4 cursor-pointer">
+        <p className="ml-11 mt-4 cursor-pointer text-xs">
           #graphql #webdev #beginners #tutorial
         </p>
         <div className="card-actions justify-between items-center ml-11 mt-3">
