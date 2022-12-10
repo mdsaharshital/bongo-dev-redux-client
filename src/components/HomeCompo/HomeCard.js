@@ -10,7 +10,7 @@ const HomeCard = ({ blog }) => {
   const dispatch = useDispatch();
   const [isLoved, setIsLoved] = useState(false);
   return (
-    <div className="card custom_card text-black rounded-lg shadow-sm">
+    <div className="card custom_card text-black rounded-lg shadow-sm my-2">
       <div className="card-body">
         <div className="flex items-center relative mb-3">
           <div className="w-8">
@@ -25,43 +25,47 @@ const HomeCard = ({ blog }) => {
             <p className="text-xs">{blog.publishedAt.slice(0, 10)}</p>
           </div>
         </div>
-        <h2
-          className="card-title text-[22px] text-start  md:text-2xl lg:text-3xl font-bold ml-11 tooltip"
-          data-tip={blog.title}
-        >
-          <Link
-            onClick={() => dispatch(addReadingBlogs(blog))}
-            to={`/BlogDetail/${blog._id}`}
+        <div className="image-full">
+          <h2
+            className="card-title text-[22px] text-start  md:text-2xl lg:text-3xl font-bold md:ml-11 tooltip "
+            data-tip={blog.title}
           >
-            {blog.title.slice(0, 55)}...
-          </Link>
-        </h2>
-
-        <div className="card-actions justify-start items-center ml-11 mt-3 sm:flex-row">
-          <p className="cursor-pointer text-sm">
-            #graphql #webdev #beginners #tutorial
-          </p>
-          <div className="flex items-center">
-            <span className="flex items-center ">
-              {isLoved ? (
-                <HiHeart
-                  fontSize={"24px"}
-                  className="text-red-500 cursor-pointer"
-                  onClick={() => setIsLoved(!isLoved)}
-                />
-              ) : (
-                <HiOutlineHeart
-                  fontSize={"24px"}
-                  className="cursor-pointer"
-                  onClick={() => setIsLoved(!isLoved)}
-                />
-              )}
-              <p className="ml-2">67</p>
-            </span>
-            <span className="flex items-center cursor-pointer ml-4 md:ml-6 lg:ml-8 xl:ml-12">
-              <BiMessageRounded fontSize={"24px"} />
-              <p className="ml-2">11 comments</p>
-            </span>
+            <Link
+              onClick={() => dispatch(addReadingBlogs(blog))}
+              to={`/BlogDetail/${blog._id}`}
+            >
+              {blog.title.slice(0, 55)}...
+            </Link>
+          </h2>
+          <figure className="my-3 mb-6">
+            <img src={blog?.urlToImage} alt="Shoes" />
+          </figure>
+          <div className="card-actions justify-start items-center md:ml-11 mt-3 sm:flex-row">
+            <p className="cursor-pointer text-sm">
+              #graphql #webdev #beginners #tutorial
+            </p>
+            <div className="flex items-center">
+              <span className="flex items-center ">
+                {isLoved ? (
+                  <HiHeart
+                    fontSize={"24px"}
+                    className="text-red-500 cursor-pointer"
+                    onClick={() => setIsLoved(!isLoved)}
+                  />
+                ) : (
+                  <HiOutlineHeart
+                    fontSize={"24px"}
+                    className="cursor-pointer"
+                    onClick={() => setIsLoved(!isLoved)}
+                  />
+                )}
+                <p className="ml-2">67</p>
+              </span>
+              <span className="flex items-center cursor-pointer ml-4 md:ml-6 lg:ml-8 xl:ml-12">
+                <BiMessageRounded fontSize={"24px"} />
+                <p className="ml-2">11 comments</p>
+              </span>
+            </div>
           </div>
         </div>
       </div>

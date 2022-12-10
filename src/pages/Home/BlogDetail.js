@@ -61,6 +61,9 @@ const BlogDetail = () => {
           <hr />
           <div className="card-actions justify-between items-center md:ml-11 mt-3">
             <div className="">
+              <figure className="my-3 mb-6">
+                <img src={blog?.urlToImage} alt="Shoes" />
+              </figure>
               <h1 className="first-letter:text-4xl tracking-wider leading-relaxed">
                 {blog?.content}
               </h1>

@@ -9,10 +9,7 @@ export const MenuSide = (
       <Link to="/readhistory">Read History</Link>
     </li>
     <li>
-      <Link to="/dashboard">Dashboard</Link>
-    </li>
-    <li className="hidden md:block">
-      <Link to="/">khalal</Link>
+      <Link to="/dashboard/bloglist">Dashboard</Link>
     </li>
   </>
 );

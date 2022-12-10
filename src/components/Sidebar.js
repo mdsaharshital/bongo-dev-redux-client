@@ -5,9 +5,9 @@ import { Link, Outlet } from "react-router-dom";
 const Sidebar = () => {
   const menu = (
     <>
-      <li>
+      {/* <li>
         <Link to="/dashboard">Dashboard</Link>
-      </li>
+      </li> */}
       <li>
         <Link to="bloglist">Blog List</Link>
       </li>

@@ -3,6 +3,7 @@ import logo from "../asstes/logo.png";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { MenuSide } from "./MenuSide";
 import people from "../asstes/people.png";
+import Footer from "./Footer";
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -84,6 +85,7 @@ const Navbar = () => {
         </div>
         {/* <!-- Page content here --> */}
         <Outlet />
+        <Footer />
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
