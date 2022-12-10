@@ -41,8 +41,10 @@ const HomeCard = ({ blog }) => {
             <img src={blog?.urlToImage} alt="Shoes" />
           </figure>
           <div className="card-actions justify-start items-center md:ml-11 mt-3 sm:flex-row">
-            <p className="cursor-pointer text-sm">
-              #graphql #webdev #beginners #tutorial
+            <p className="text-sm font-semibold">
+              <span className="bg-green-300 px-2 py-0.5 rounded-full">
+                #{blog?.topic}
+              </span>
             </p>
             <div className="flex items-center">
               <span className="flex items-center ">

@@ -36,8 +36,10 @@ const BlogDetail = () => {
             {blog?.title}
           </h2>
           <span className="flex items-center cursor-pointer">
-            <p className="md:ml-11 mt-1 cursor-pointer ">
-              #graphql #webdev #beginners #tutorial
+            <p className="md:ml-11 mt-1 text-sm">
+              <span className="bg-green-300 px-2 py-0.5 font-semibold rounded-full">
+                #{blog?.topic}
+              </span>
             </p>
             <span className="flex items-center cursor-pointer">
               {isMarked ? (

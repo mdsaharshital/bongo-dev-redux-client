@@ -8,17 +8,20 @@ const TagsBar = () => {
     <div className="relative">
       <div className="mx-auto divider">Tags</div>
       <ul>
-        <li onClick={() => dispatch(sortByTags("#webdevelopment"))}>
-          <span>#webdevelopment</span>
+        <li onClick={() => dispatch(sortByTags("politics"))}>
+          <span>#politics</span>
         </li>
-        <li onClick={() => dispatch(sortByTags("#career"))}>
-          <span>#career</span>
+        <li onClick={() => dispatch(sortByTags("starNews"))}>
+          <span>#starNews</span>
         </li>
-        <li onClick={() => dispatch(sortByTags("#technews"))}>
-          <span>#technews</span>
+        <li onClick={() => dispatch(sortByTags("sports"))}>
+          <span>#sports</span>
         </li>
-        <li onClick={() => dispatch(sortByTags("#joblisting"))}>
-          <span>#joblisting</span>
+        <li onClick={() => dispatch(sortByTags("crime"))}>
+          <span>#crime</span>
+        </li>
+        <li onClick={() => dispatch(sortByTags("other"))}>
+          <span>#other</span>
         </li>
       </ul>
     </div>

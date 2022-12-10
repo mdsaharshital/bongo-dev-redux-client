@@ -4,6 +4,24 @@ import HomeCard from "./HomeCard";
 
 const MiddleSideHome = () => {
   const blogs = useSelector((state) => state.blog.blogs);
+  const sortByTag = useSelector((state) => state.filter.sortByTags);
+  console.log("fil", sortByTag);
+  let content;
+  if (blogs.length) {
+    content = blogs.map((blog, index) => <HomeCard key={index} blog={blog} />);
+  }
+
+  if (blogs.length && sortByTag) {
+    content = blogs
+      .filter((blog) => {
+        if (sortByTag.length) {
+          return sortByTag.includes(blog.topic);
+        } else {
+          return blog;
+        }
+      })
+      .map((blog, index) => <HomeCard key={index} blog={blog} />);
+  }
   if (!blogs.length) {
     return (
       <div className="lg:w-[60vw] h-[80vh] flex justify-center items-center">
@@ -18,15 +36,7 @@ const MiddleSideHome = () => {
         <h1 className="ml-2 text-xl mr-8">Latest</h1>
         <h1 className="ml-2 text-xl">First Upload</h1>
       </div>
-      <div className="">
-        {blogs.length ? (
-          blogs.map((blog, index) => <HomeCard key={index} blog={blog} />)
-        ) : (
-          <p className="text-red-500 text-3xl font-bold text-center">
-            No Blogs to show!
-          </p>
-        )}
-      </div>
+      <div className="">{content}</div>
     </div>
   );
 };
