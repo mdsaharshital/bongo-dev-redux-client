@@ -1,20 +1,28 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFilters } from "../../redux/actions/filterAction";
+import { resetFilters, sortByDate } from "../../redux/actions/filterAction";
 import HomeCard from "./HomeCard";
 
 const MiddleSideHome = () => {
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blog.blogs);
   const sortByTag = useSelector((state) => state.filter.sortByTags);
-  console.log("fil", sortByTag);
+  const sortByTime = useSelector((state) => state.filter.sortByTime);
+  console.log("fil", sortByTime);
   let content;
   if (blogs.length) {
     content = blogs.map((blog, index) => <HomeCard key={index} blog={blog} />);
   }
 
-  if (blogs.length && sortByTag) {
+  if (blogs.length && (sortByTag || sortByTime)) {
     content = blogs
+      .filter((blog) => {
+        if (sortByTime.length) {
+          return { ...sortByTime };
+        } else {
+          return blog;
+        }
+      })
       .filter((blog) => {
         if (sortByTag.length) {
           return sortByTag.includes(blog.topic);
@@ -31,16 +39,30 @@ const MiddleSideHome = () => {
       </div>
     );
   }
+
   console.log(blogs);
   return (
     <div className="col-span-3 ">
       <div className="flex text-black mb-3 justify-between px-4">
         <div className="flex">
-          <h1 className="ml-2 mr-8 cursor-pointer">Latest</h1>
-          <h1 className="ml-2 cursor-pointer">First Upload</h1>
+          <h1
+            className="ml-2 mr-8 cursor-pointer"
+            onClick={() => dispatch(sortByDate(blogs, "new"))}
+          >
+            Latest
+          </h1>
+          <h1
+            className="ml-2 cursor-pointer"
+            onClick={() => dispatch(sortByDate(blogs, "old"))}
+          >
+            First Upload
+          </h1>
         </div>
         <h1
-          onClick={() => dispatch(resetFilters())}
+          onClick={() => {
+            dispatch(sortByDate(blogs, "new"));
+            dispatch(resetFilters());
+          }}
           className="btn btn-ghost btn-sm"
         >
           Reset
