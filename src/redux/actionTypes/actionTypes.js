@@ -1,5 +1,7 @@
 // actions for blog reducer
 export const LOAD_BLOGS = "LOAD_BLOGS";
+export const POST_BLOGS = "POST_BLOGS";
+export const DELETE_BLOG = "DELETE_BLOG";
 export const READING_BLOGS = "READING_BLOGS";
 export const COMPLETED_BLOGS = "COMPLETED_BLOGS";
 

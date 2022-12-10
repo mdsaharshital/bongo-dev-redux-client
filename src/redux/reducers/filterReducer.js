@@ -56,7 +56,7 @@ export const filterReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        sortByTime: [],
+        sortByTime: { data: action.payload.data, day: "" },
       };
     default:
       return state;

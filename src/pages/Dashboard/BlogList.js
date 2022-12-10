@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBlogs from "../../redux/thunk/blogs/fetchBlog";
 import { FaRegEdit } from "react-icons/fa";
+import deleteBlogThunk from "../../redux/thunk/blogs/deleteBlogThunk";
 
 const BlogList = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const BlogList = () => {
                         class="font-medium text-gray-800 tooltip"
                         data-tip={title}
                       >
-                        {title.slice(0, 85)}
+                        {title.length > 85 ? title?.slice(0, 85) : title}
                       </div>
                     </td>
                     <td class="p-2">
@@ -72,7 +73,7 @@ const BlogList = () => {
                     <td class="p-2">
                       <div class="text-left">
                         <p className="text-green-500 font-medium">
-                          {publishedAt.slice(0, 10)}
+                          {publishedAt?.slice(0, 10)}
                         </p>
                       </div>
                     </td>
@@ -83,7 +84,10 @@ const BlogList = () => {
                     </td>
                     <td class="p-2">
                       <div class="flex justify-center items-center">
-                        <button onClick={() => dispatch(_id)} className="mr-2">
+                        <button
+                          onClick={() => dispatch(deleteBlogThunk(_id))}
+                          className="mr-2"
+                        >
                           <svg
                             class="w-8 h-8 hover:text-red-600 rounded-full hover:bg-gray-100 p-1"
                             fill="none"

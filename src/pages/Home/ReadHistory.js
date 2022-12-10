@@ -26,7 +26,9 @@ const ReadHistory = () => {
                 </p>
               </Link>
               <p className="text-sm text-slate-600">
-                {blog.description.slice(0, 160)}
+                {blog.description.length > 160
+                  ? blog.description?.slice(0, 160)
+                  : blog.description}
               </p>
               <span
                 className="tooltip text-black cursor-pointer block absolute top-4 right-4"
@@ -56,10 +58,15 @@ const ReadHistory = () => {
             <Link to={`/BlogDetail/${blog._id}`} key={index}>
               <div className="my-8 shadow-md p-4 rounded-md">
                 <p className="text-black text-xl my-2 font-semibold">
-                  {index + 1}. {blog.title.slice(0, 40)}
+                  {index + 1}.{" "}
+                  {blog?.title.length > 40
+                    ? blog?.title?.slice(0, 40)
+                    : blog?.title}
                 </p>
                 <p className="text-sm text-slate-600">
-                  {blog.description.slice(0, 100)}
+                  {blog.description.length > 100
+                    ? blog.description?.slice(0, 100)
+                    : blog.description}
                 </p>
               </div>
             </Link>

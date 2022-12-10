@@ -1,6 +1,8 @@
 import {
   COMPLETED_BLOGS,
+  DELETE_BLOG,
   LOAD_BLOGS,
+  POST_BLOGS,
   READING_BLOGS,
   REMOVE_FROM_READ,
 } from "../actionTypes/actionTypes";
@@ -9,6 +11,18 @@ export const loadBlogs = (blogs) => {
   return {
     type: LOAD_BLOGS,
     payload: blogs,
+  };
+};
+export const postBlogs = (data) => {
+  return {
+    type: POST_BLOGS,
+    payload: data,
+  };
+};
+export const deleteBlog = (id) => {
+  return {
+    type: DELETE_BLOG,
+    payload: id,
   };
 };
 export const addReadingBlogs = (blog) => {

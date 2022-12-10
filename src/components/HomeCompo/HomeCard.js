@@ -22,7 +22,11 @@ const HomeCard = ({ blog }) => {
           </div>
           <div className="ml-2 absolute left-9 top-[0px]">
             <p className="text-xs">{blog.author ? blog.author : "Anonymous"}</p>
-            <p className="text-xs">{blog.publishedAt.slice(0, 10)}</p>
+            <p className="text-xs">
+              {blog.publishedAt.length > 10
+                ? blog.publishedAt.slice(0, 10)
+                : blog.publishedAt}
+            </p>
           </div>
         </div>
         <div className="image-full">
@@ -34,7 +38,10 @@ const HomeCard = ({ blog }) => {
               onClick={() => dispatch(addReadingBlogs(blog))}
               to={`/BlogDetail/${blog._id}`}
             >
-              {blog.title.slice(0, 55)}...
+              {blog?.title.length > 55
+                ? blog?.title?.slice(0, 55)
+                : blog?.title}
+              ...
             </Link>
           </h2>
           <figure className="my-3 mb-6">
