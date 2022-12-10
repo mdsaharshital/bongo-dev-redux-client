@@ -1,8 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { resetFilters } from "../../redux/actions/filterAction";
 import HomeCard from "./HomeCard";
 
 const MiddleSideHome = () => {
+  const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blog.blogs);
   const sortByTag = useSelector((state) => state.filter.sortByTags);
   console.log("fil", sortByTag);
@@ -32,9 +34,17 @@ const MiddleSideHome = () => {
   console.log(blogs);
   return (
     <div className="col-span-3 ">
-      <div className="flex text-black mb-3">
-        <h1 className="ml-2 text-xl mr-8">Latest</h1>
-        <h1 className="ml-2 text-xl">First Upload</h1>
+      <div className="flex text-black mb-3 justify-between px-4">
+        <div className="flex">
+          <h1 className="ml-2 mr-8 cursor-pointer">Latest</h1>
+          <h1 className="ml-2 cursor-pointer">First Upload</h1>
+        </div>
+        <h1
+          onClick={() => dispatch(resetFilters())}
+          className="btn btn-ghost btn-sm"
+        >
+          Reset
+        </h1>
       </div>
       <div className="">{content}</div>
     </div>

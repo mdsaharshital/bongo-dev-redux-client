@@ -9,3 +9,4 @@ export const REMOVE_FROM_READ = "REMOVE_FROM_READ";
 
 export const ALL_TAGS = "ALL_TAGS";
 export const SORT_BY_DATE = "SORT_BY_DATE";
+export const RESET_FILTER = "RESET_FILTER";

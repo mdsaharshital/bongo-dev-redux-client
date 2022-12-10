@@ -1,4 +1,4 @@
-import { ALL_TAGS } from "../actionTypes/actionTypes";
+import { ALL_TAGS, RESET_FILTER } from "../actionTypes/actionTypes";
 
 const initialState = {
   sortByTime: [],
@@ -18,7 +18,11 @@ export const filterReducer = (state = initialState, action) => {
           sortByTags: state.sortByTags.filter((tag) => tag !== action.payload),
         };
       }
-
+    case RESET_FILTER:
+      return {
+        sortByTime: [],
+        sortByTags: [],
+      };
     default:
       return state;
   }
