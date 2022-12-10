@@ -1,21 +1,23 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { sortByTags } from "../redux/actions/filterAction";
 
 const TagsBar = () => {
+  const dispatch = useDispatch();
   return (
-    <div className="">
-      {/* <hr /> */}
+    <div className="relative">
       <div className="mx-auto divider">Tags</div>
       <ul>
-        <li>
+        <li onClick={() => dispatch(sortByTags("#webdevelopment"))}>
           <span>#webdevelopment</span>
         </li>
-        <li>
+        <li onClick={() => dispatch(sortByTags("#career"))}>
           <span>#career</span>
         </li>
-        <li>
+        <li onClick={() => dispatch(sortByTags("#technews"))}>
           <span>#technews</span>
         </li>
-        <li>
+        <li onClick={() => dispatch(sortByTags("#joblisting"))}>
           <span>#joblisting</span>
         </li>
       </ul>
