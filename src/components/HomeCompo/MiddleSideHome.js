@@ -17,8 +17,8 @@ const MiddleSideHome = () => {
   if (blogs.length && (sortByTag || sortByTime)) {
     content = blogs
       .filter((blog) => {
-        if (sortByTime.length) {
-          return { ...sortByTime };
+        if (sortByTime.data?.length) {
+          return { ...sortByTime.data };
         } else {
           return blog;
         }
@@ -46,13 +46,21 @@ const MiddleSideHome = () => {
       <div className="flex text-black mb-3 justify-between px-4">
         <div className="flex">
           <h1
-            className="ml-2 mr-8 cursor-pointer"
+            className={
+              sortByTime.day === "new"
+                ? `text-green-500 ml-2 mr-8 cursor-pointer`
+                : "ml-2 mr-8 cursor-pointer"
+            }
             onClick={() => dispatch(sortByDate(blogs, "new"))}
           >
             Latest
           </h1>
           <h1
-            className="ml-2 cursor-pointer"
+            className={
+              sortByTime.day === "old"
+                ? `text-green-500 ml-2 cursor-pointer`
+                : "ml-2 cursor-pointer"
+            }
             onClick={() => dispatch(sortByDate(blogs, "old"))}
           >
             First Upload

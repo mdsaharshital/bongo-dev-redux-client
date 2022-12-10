@@ -5,7 +5,7 @@ import {
 } from "../actionTypes/actionTypes";
 
 const initialState = {
-  sortByTime: [],
+  sortByTime: { data: [], day: "" },
   sortByTags: [],
 };
 export const filterReducer = (state = initialState, action) => {
@@ -24,7 +24,7 @@ export const filterReducer = (state = initialState, action) => {
       }
     case RESET_FILTER:
       return {
-        sortByTime: [],
+        sortByTime: { data: [], day: "" },
         sortByTags: [],
       };
     //
@@ -32,18 +32,26 @@ export const filterReducer = (state = initialState, action) => {
       if (action.payload.time === "new") {
         return {
           ...state,
-          sortByTime: [
-            ...action.payload.data.sort(function (a, b) {
-              return new Date(b.publishedAt) - new Date(a.publishedAt);
-            }),
-          ],
+          sortByTime: {
+            data: [
+              ...action.payload.data.sort(function (a, b) {
+                return new Date(b.publishedAt) - new Date(a.publishedAt);
+              }),
+            ],
+            day: "new",
+          },
         };
       } else if (action.payload.time === "old") {
         return {
           ...state,
-          sortByTime: action.payload.data.sort(function (a, b) {
-            return new Date(a.publishedAt) - new Date(b.publishedAt);
-          }),
+          sortByTime: {
+            data: [
+              ...action.payload.data.sort(function (a, b) {
+                return new Date(a.publishedAt) - new Date(b.publishedAt);
+              }),
+            ],
+            day: "old",
+          },
         };
       }
       return {
