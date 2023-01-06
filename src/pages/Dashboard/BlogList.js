@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBlogs from "../../redux/thunk/blogs/fetchBlog";
 import { FaRegEdit } from "react-icons/fa";
 import deleteBlogThunk from "../../redux/thunk/blogs/deleteBlogThunk";
+import UpdateBlogModa from "../../components/UpdateBlogModa";
 
 const BlogList = () => {
+  const [ID, setId] = useState("1");
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blog.blogs);
   useEffect(() => {
@@ -79,7 +81,7 @@ const BlogList = () => {
                     </td>
                     <td class="p-2">
                       <div class="text-left font-medium text-indigo-500">
-                        {source.name}
+                        {source}
                       </div>
                     </td>
                     <td class="p-2">
@@ -103,9 +105,14 @@ const BlogList = () => {
                             ></path>
                           </svg>
                         </button>
-                        <button className="w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1">
+                        <label
+                          htmlFor="updateModalAction"
+                          onClick={() => setId(_id)}
+                          className="w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1"
+                        >
                           <FaRegEdit fontSize={"24px"} />
-                        </button>
+                        </label>
+                        <UpdateBlogModa id={ID} />
                       </div>
                     </td>
                   </tr>

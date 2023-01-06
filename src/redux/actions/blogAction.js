@@ -5,6 +5,7 @@ import {
   POST_BLOGS,
   READING_BLOGS,
   REMOVE_FROM_READ,
+  UPDATE_BLOG,
 } from "../actionTypes/actionTypes";
 
 export const loadBlogs = (blogs) => {
@@ -23,6 +24,12 @@ export const deleteBlog = (id) => {
   return {
     type: DELETE_BLOG,
     payload: id,
+  };
+};
+export const updateABlog = (blog) => {
+  return {
+    type: UPDATE_BLOG,
+    payload: blog,
   };
 };
 export const addReadingBlogs = (blog) => {

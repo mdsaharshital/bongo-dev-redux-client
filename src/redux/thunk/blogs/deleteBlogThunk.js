@@ -1,9 +1,9 @@
-import { deleteBlog, loadBlogs } from "../../actions/blogAction";
+import { deleteBlog } from "../../actions/blogAction";
 
 const deleteBlogThunk = (id) => {
   return async (dispatch) => {
     const res = await fetch(
-      `https://bongo-dev-redux-server-production.up.railway.app/blog/${id}`,
+      `https://bongo-dev-redux-server.vercel.app/blog/${id}`,
       {
         method: "DELETE",
         headers: {

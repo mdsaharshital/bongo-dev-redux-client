@@ -5,6 +5,7 @@ import {
   READING_BLOGS,
   REMOVE_FROM_READ,
   POST_BLOGS,
+  UPDATE_BLOG,
 } from "../actionTypes/actionTypes";
 
 const initialState = {
@@ -37,6 +38,14 @@ export const blogReducer = (state = initialState, action) => {
       return {
         ...state,
         blogs: state.blogs.filter((blog) => blog._id !== action.payload),
+      };
+    case UPDATE_BLOG:
+      return {
+        ...state,
+        blogs: [
+          ...state.blogs.filter((blog) => blog._id !== action.payload._id),
+          action.payload,
+        ],
       };
     case READING_BLOGS:
       if (addedRead) {
