@@ -2,7 +2,7 @@ import { updateABlog } from "../../actions/blogAction";
 
 const updateBlog = (blog, id) => {
   return async (dispatch) => {
-    const res = await fetch(`http://localhost:5000/blog`, {
+    const res = await fetch(`https://bongo-dev-redux-server.vercel.app/blog`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
