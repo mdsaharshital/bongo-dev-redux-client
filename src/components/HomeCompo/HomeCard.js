@@ -30,23 +30,31 @@ const HomeCard = ({ blog }) => {
           </div>
         </div>
         <div className="image-full">
-          <h2
-            className="card-title text-[22px] text-start  md:text-2xl lg:text-3xl font-bold md:ml-11 tooltip "
-            data-tip={blog.title}
-          >
-            <Link
-              onClick={() => dispatch(addReadingBlogs(blog))}
-              to={`/BlogDetail/${blog._id}`}
+          <div className="md:flex">
+            <figure className="my-3 mb-6 lg:w-96">
+              <img src={blog?.urlToImage} alt="Shoes" />
+            </figure>
+            <h2
+              className="card-title text-[18px] text-start  md:text-[20px] lg:text-xl font-bold md:ml-11 tooltip "
+              data-tip={blog.title}
             >
-              {blog?.title.length > 55
-                ? blog?.title?.slice(0, 55)
-                : blog?.title}
-              ...
-            </Link>
-          </h2>
-          <figure className="my-3 mb-6">
-            <img src={blog?.urlToImage} alt="Shoes" />
-          </figure>
+              <Link
+                onClick={() => dispatch(addReadingBlogs(blog))}
+                to={`/BlogDetail/${blog._id}`}
+                className="hover:text-blue-500"
+              >
+                <h1>
+                  {blog?.title.length > 55
+                    ? blog?.title?.slice(0, 55)
+                    : blog?.title}
+                  ...
+                </h1>
+                <p className="text-[14px] text-gray-400">
+                  {blog?.content?.slice(0, 66)}...
+                </p>
+              </Link>
+            </h2>
+          </div>
           <div className="card-actions justify-start items-center md:ml-11 mt-3 sm:flex-row">
             <p className="text-sm font-semibold">
               <span className="bg-green-300 px-2 py-0.5 rounded-full">

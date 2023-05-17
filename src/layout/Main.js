@@ -9,7 +9,7 @@ const Main = () => {
     dispatch(fetchBlogs());
   }, [dispatch]);
   return (
-    <div className="bg-slate-50">
+    <div className="bg-white">
       <Navbar />
     </div>
   );
